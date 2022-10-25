@@ -146,6 +146,11 @@ def register():
             return render_template("error.html", error="must provide identity")
         if not alamat :
             return render_template("error.html", error="must provide identity")
+        try:
+            int(nik)
+            int(telepon)
+        except ValueError:
+            return render_template("error.html", error="format salah")
 
 
 
