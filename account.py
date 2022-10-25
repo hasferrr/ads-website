@@ -168,8 +168,27 @@ def register():
                     (session["user_id"], nama, nik, telepon, alamat))
         con.commit()
 
+        ######## ADD GENRE YANG DISUKAI KE DATABASE #######
+        selected = request.form.getlist("check")
+        genres = {
+            "Horror" : 0,
+            "Fantasy" : 0,
+            "Drama" : 0,
+            "Romance" : 0,
+            "Action" : 0,
+            "Animation" : 0,
+            "Documentary" : 0
+        }
+        for i in genres:
+            if i in selected:
+                genres[i] = 1
+
+        cur.execute("INSERT INTO genre (user_id, Horror, Fantasy, Drama, Romance, Action, Animation, Documentary) VALUES (?,?,?,?,?,?,?,?)",
+                    (session["user_id"], genres["Horror"], genres["Fantasy"], genres["Drama"], genres["Romance"], genres["Action"], genres["Animation"], genres["Documentary"],))
+        con.commit()
 
 
+        ######## CLOSE FILE ########
         con.close()
         return redirect("/")
 
