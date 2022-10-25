@@ -13,20 +13,20 @@
     <h2 class="mb-5">Rincian Penyewaan</h2>
     <div class="row">
         <div class="col">
-            <form>
+            <form action="/" method="post">
                 <table cellspacing="0" cellpadding="5">
                     <tr>
                         <td><label for="username">Username</label></td>
-                        <td><input type="text" id="username"></td>
+                        <td><input disabled="" placeholder="{{ username }}" value="{{ username }}" type="text" id="username"></td>
                     </tr>
                     <tr>
                         <td><label for="Nama">Nama</label></td>
-                        <td><input type="text" id="nama"></td>
+                        <td><input disabled="" placeholder="{{ nama }}" value="{{ nama }}" type="text" id="nama"></td>
                     </tr>
                     <tr>
                         <td><label>Judul Film</label></td>
                         <td>
-                            <select id="judul">
+                            <select required id="judul" name="judul">
                                 <option disabled selected value="">--Select A Title--</option>
                                 <option value="The Shawshank Redemption (1994)">The Shawshank Redemption (1994)</option>
                                 <option value="The Godfather (1972)">The Godfather (1972)</option>
@@ -46,9 +46,9 @@
                     <tr>
                         <td><label for="kuantitas">Kuantitas</label></td>
                         <td>
-                            <select id="kuantitas">
-                                <option disabled selected value="0">--Select Quantities--</option>
-                                <option value="1">1</option>
+                            <select required id="kuantitas" name="kuantitas">
+                                <option disabled value="">--Select Quantities--</option>
+                                <option selected value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td><label for="tanggal_pengembalian">Tanggal Pengembalian</label></td>
-                        <td><input type="date" id="tanggal_pengembalian"></td>
+                        <td><input required type="date" id="tanggal_pengembalian" name="tanggal_pengembalian"></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -65,13 +65,12 @@
                     <tr>
                         <td></td>
                         <td>
-                            <button class="btn btn-primary" type="button" onclick="konfirmasi();">
+                            <button class="btn btn-primary" type="button" onclick="check();">
                                 Check
                             </button>
                         </td>
                     </tr>
                 </table>
-            </form>
         </div>
         <div class="col">
             <!--Konfirmasi untuk menyewa-->
@@ -94,8 +93,8 @@
                         <td id="konfirmasi_Kuantitas"></td>
                     </tr>
                     <tr>
-                        <td>Durasi Peminjaman:</td>
-                        <td id="konfirmasi_Durasi"></td>
+                        <td>Tanggal Pengembalian:</td>
+                        <td id="konfirmasi_Tanggal"></td>
                     </tr>
                     <tr>
                         <td>Total Harga Sewa:</td>
@@ -116,16 +115,29 @@
                             <option value="Dana"      > Dana       </option>
                         </select>
                     </div>
+
                     <div class="col">
-                        <button class="btn btn-primary" type="button" onclick="">
-                            Pilih
+                        <button style="display: none;" id="conff" class="btn btn-primary" type="button" onclick="metode_bayar()">
+                            Konfirmasi
                         </button>
                     </div>
+
                 </div>
-            </div>
+            </div><!--end of mb-5-->
+        </div><!--end of COL-->
+    </div><!--end of ROW-->
+
+    <div class="text-center">
+        <img id="qrcode" class="img-thumbnail" style="display: none; height:15rem; width:15rem;" src="static/qrcode.png" alt="qrcode">
+        <div id="cetaknotanow" style="display: none ;">
+            <br>
+            <button class="btn btn-primary" type="submit">
+                Cetak Nota
+            </button>
         </div>
     </div>
-<!--end of container-->
-</div>
+
+</form>
+</div><!--end of container-->
 
 {% endblock %}

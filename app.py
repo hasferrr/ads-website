@@ -28,8 +28,31 @@ def index():
 
     # If user LOGGED IN
     # Connect to database
+    con, cur = connect_db()
+    users_pelanggan = cur.execute("SELECT * FROM users JOIN pelanggan WHERE users.id = pelanggan.user_id AND users.id = ?",
+                                    (session["user_id"],))
+    users_pelanggan = users_pelanggan.fetchall()[0]
 
-    return render_template("home.html")
+    username = users_pelanggan[1]
+    nama = users_pelanggan[5]
+
+    judul = request.form.get("judul")
+    kuantitas = request.form.get("kuantitas")
+    tanggal_pengembalian = request.form.get("tanggal_pengembalian")
+
+    if not judul:
+        return render_template("error.html", error="must provide data")
+    if not kuantitas:
+        return render_template("error.html", error="must provide data")
+    if not tanggal_pengembalian:
+        return render_template("error.html", error="must provide data")
+
+    cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian) VALUES (?, ?, ?, ?)",
+        (session["user_id"], judul, kuantitas, tanggal_pengembalian))
+    con.commit()
+
+
+    return render_template("home.html", username=username, nama=nama)
 
 
 
