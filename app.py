@@ -36,23 +36,28 @@ def index():
     username = users_pelanggan[1]
     nama = users_pelanggan[5]
 
-    judul = request.form.get("judul")
-    kuantitas = request.form.get("kuantitas")
-    tanggal_pengembalian = request.form.get("tanggal_pengembalian")
+    if request.method == "POST":
 
-    if not judul:
-        return render_template("error.html", error="must provide data")
-    if not kuantitas:
-        return render_template("error.html", error="must provide data")
-    if not tanggal_pengembalian:
-        return render_template("error.html", error="must provide data")
+        judul = request.form.get("judul")
+        kuantitas = request.form.get("kuantitas")
+        tanggal_pengembalian = request.form.get("tanggal_pengembalian")
 
-    cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian) VALUES (?, ?, ?, ?)",
-        (session["user_id"], judul, kuantitas, tanggal_pengembalian))
-    con.commit()
+        if not judul:
+            return render_template("error.html", error="must provide data")
+        if not kuantitas:
+            return render_template("error.html", error="must provide data")
+        if not tanggal_pengembalian:
+            return render_template("error.html", error="must provide data")
+
+        cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian) VALUES (?, ?, ?, ?)",
+            (session["user_id"], judul, kuantitas, tanggal_pengembalian))
+        con.commit()
 
 
-    return render_template("home.html", username=username, nama=nama)
+        return render_template("home.html", username=username, nama=nama)
+
+    else:
+        return render_template("home.html", username=username, nama=nama)
 
 
 
@@ -61,6 +66,13 @@ def index():
 @login_required
 def sewa():
     return redirect("/")
+
+
+
+@app.route("/data", methods=["GET"])
+@login_required
+def data():
+    return render_template("data.html")
 
 
 
