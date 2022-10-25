@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<h2 class="mb-5">Registrasi Pelanggan</h2>
+<form action="/register" method="post">
+
+    <div class="row">
+        <table class="mb-3 col">
+            <tr>
+                <td>Username</td>
+                <td><input id="username" name="username" placeholder="Username" type="text" autocomplete="off" autofocus></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input name="password" placeholder="Password" type="password"></td>
+            </tr>
+            <tr>
+                <td>Password (Again)</td>
+                <td><input name="confirmation" placeholder="Password (again)" type="password"></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" id="nama"></td>
+            </tr>
+            <tr>
+                <td>Nomor Identitas (NIK)</td>
+                <td><input type="number" id="nik"></td>
+            </tr>
+            <tr>
+                <td>Nomor Telepon</td>
+                <td><input type="number" id="telepon"></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td><input type="text" id="alamat"></td>
+            </tr>
+        </table>
+
+        <div class="mb-5 form-group col">
+            <p class="lead">Genre yang Diminati</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Horror" value="Horror"/>
+                    <label class="form-check-label">Horror</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Fantasy" value="Fantasy"/>
+                    <label class="form-check-label">Fantasy</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Drama" value="Drama"/>
+                    <label class="form-check-label">Drama</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Romance" value="Romance"/>
+                    <label class="form-check-label">Romance</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Action" value="Action"/>
+                    <label class="form-check-label">Action</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Animation" value="Animation"/>
+                    <label class="form-check-label">Animation</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="Documentary" value="Documentary"/>
+                    <label class="form-check-label">Documentary</label>
+                </div>
+                <div>
+                    <button class="btn btn-primary mt-5" type="submit">Register</button>
+                </div>
+            </tr>
+        </div>
+    <!--ROW-->
+    </div>
+
+</form>
+
+{% endblock %}

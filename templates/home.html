@@ -1,0 +1,131 @@
+<!-- SETELAH LOGIN -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Sewa
+{% endblock %}
+
+{% block main %}
+
+<!--Formulir Penyewaan DVD-->
+<div class="container mb-5">
+    <h2 class="mb-5">Rincian Penyewaan</h2>
+    <div class="row">
+        <div class="col">
+            <form>
+                <table cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td><label for="username">Username</label></td>
+                        <td><input type="text" id="username"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Nama">Nama</label></td>
+                        <td><input type="text" id="nama"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Judul Film</label></td>
+                        <td>
+                            <select id="judul">
+                                <option disabled selected value="">--Select A Title--</option>
+                                <option value="The Shawshank Redemption (1994)">The Shawshank Redemption (1994)</option>
+                                <option value="The Godfather (1972)">The Godfather (1972)</option>
+                                <option value="Soorarai Pottru (2020)">Soorarai Pottru (2020)</option>
+                                <option value="The Dark Knight (2008)">The Dark Knight (2008)</option>
+                                <option value="The Godfather: Part II (1974)">The Godfather: Part II (1974)</option>
+                                <option value="12 Angry Men (1957)">12 Angry Men (1957)</option>
+                                <option value="Dara of Jasenovac (2020)">Dara of Jasenovac (2020)</option>
+                                <option value="The Lord of the Rings: The Return of the King (2003)">The Lord of the Rings: The Return of the King (2003)</option>
+                                <option value="Pulp Fiction (1994)">Pulp Fiction (1994)</option>
+                                <option value="The Good, the Bad and the Ugly (1966)">The Good, the Bad and the Ugly (1966)</option>
+                                <option value="Schindler's List (1993)">Schindler's List (1993)</option>
+                                <option value="Peranbu (2018)">Peranbu (2018)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="kuantitas">Kuantitas</label></td>
+                        <td>
+                            <select id="kuantitas">
+                                <option disabled selected value="0">--Select Quantities--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="tanggal_pengembalian">Tanggal Pengembalian</label></td>
+                        <td><input type="date" id="tanggal_pengembalian"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-primary" type="button" onclick="konfirmasi();">
+                                Check
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col">
+            <!--Konfirmasi untuk menyewa-->
+            <div class="mb-5">
+                <table cellpadding="10" style="border: 1px solid black">
+                    <tr>
+                        <td>Username:</td>
+                        <td id="konfirmasi_Username"></td>
+                    </tr>
+                    <tr>
+                        <td>Nama:</td>
+                        <td id="konfirmasi_Nama"></td>
+                    </tr>
+                    <tr>
+                        <td>Judul Film:</td>
+                        <td id="konfirmasi_Judul"></td>
+                    </tr>
+                    <tr>
+                        <td>Kuantitas:</td>
+                        <td id="konfirmasi_Kuantitas"></td>
+                    </tr>
+                    <tr>
+                        <td>Durasi Peminjaman:</td>
+                        <td id="konfirmasi_Durasi"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Harga Sewa:</td>
+                        <td id="konfirmasi_Total"></td>
+                    </tr>
+                </table>
+                <div class="row form-group mt-4" id="button_pilih_metode_pembayaran">
+                    <div class="col">
+                        <select class="form-control" id="pilih_metode_pembayaran">
+                            <option disabled selected value="">-- Pilih metode pembayaran --</option>
+                            <option value="Tunai"     > Tunai      </option>
+                            <option value="Debit"     > Debit      </option>
+                            <option value="Kredit"    > Kredit     </option>
+                            <option value="Gopay"     > Gopay      </option>
+                            <option value="OVO"       > OVO        </option>
+                            <option value="Link aja"  > Link aja   </option>
+                            <option value="Shopee pay"> Shopee pay </option>
+                            <option value="Dana"      > Dana       </option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" type="button" onclick="">
+                            Pilih
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--end of container-->
+</div>
+
+{% endblock %}
