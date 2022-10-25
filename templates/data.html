@@ -5,5 +5,86 @@
 {% endblock %}
 
 {% block main %}
-<p>youre not an admin</p>
+<p class="lead text-muted"><small>Data-data ini diambil dari DataBase SQL pelanggan DVD Kurang Laku</small></p>
+
+<p class="mt-5 lead text-center">Data Username dan Password</p>
+<table class="table table-striped">
+    <tr>
+        <th>user_id</th>
+        <th>username</th>
+        <th>hash (pasword)</th>
+    </tr>
+    {% for i in users %}
+    <tr>
+        <td>{{ i[0] }}</td>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p class="mt-5 lead text-center">Data Identitas Pelanggan</p>
+<table class="table table-striped">
+    <tr>
+        <th>user_id</th>
+        <th>Nama</th>
+        <th>NIK</th>
+        <th>Telepon</th>
+        <th>Alamat</th>
+    </tr>
+    {% for i in pelanggan %}
+    <tr>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+        <td>{{ i[3] }}</td>
+        <td>{{ i[4] }}</td>
+        <td>{{ i[5] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p class="mt-5 lead text-center">Data Penyewaan DVD</p>
+<table class="table table-striped">
+    <tr>
+        <th>user_id</th>
+        <th>Judul</th>
+        <th>Kuantitas</th>
+        <th>Tanggal Pengembalian</th>
+    </tr>
+    {% for i in sewa %}
+    <tr>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+        <td>{{ i[3] }}</td>
+        <td>{{ i[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p class="mt-5 lead text-center">Data Genre Favorit</p>
+<table class="table table-striped">
+    <tr>
+        <th>user_id</th>
+        <th>Horror</th>
+        <th>Fantasy</th>
+        <th>Drama</th>
+        <th>Romance</th>
+        <th>Action</th>
+        <th>Animation</th>
+        <th>Documentary</th>
+    </tr>
+    {% for i in genre %}
+    <tr>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+        <td>{{ i[3] }}</td>
+        <td>{{ i[4] }}</td>
+        <td>{{ i[5] }}</td>
+        <td>{{ i[6] }}</td>
+        <td>{{ i[7] }}</td>
+        <td>{{ i[8] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}

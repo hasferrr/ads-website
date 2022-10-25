@@ -72,7 +72,14 @@ def sewa():
 @app.route("/data", methods=["GET"])
 @login_required
 def data():
-    return render_template("data.html")
+
+    con, cur = connect_db()
+    users = cur.execute("SELECT * FROM users").fetchall()
+    pelanggan = cur.execute("SELECT * FROM pelanggan").fetchall()
+    sewa = cur.execute("SELECT * FROM sewa").fetchall()
+    genre = cur.execute("SELECT * FROM genre").fetchall()
+
+    return render_template("data.html", users=users, pelanggan=pelanggan, sewa=sewa, genre=genre)
 
 
 
