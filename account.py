@@ -131,6 +131,25 @@ def register():
                 return render_template("error.html", error="username is already taken")
 
 
+
+
+        ##### ENSURE THAT (MEMASTIKAN) PELANGGAN MEMASUKKAN IDENTITAS KETIKA REGISTRASI #####
+        nama    = request.form.get("nama")
+        nik     = request.form.get("nik")
+        telepon = request.form.get("telepon")
+        alamat  = request.form.get("alamat")
+        if not nama :
+            return render_template("error.html", error="must provide identity")
+        if not nik :
+            return render_template("error.html", error="must provide identity")
+        if not telepon :
+            return render_template("error.html", error="must provide identity")
+        if not alamat :
+            return render_template("error.html", error="must provide identity")
+
+
+
+
         ######## ADDING SECTION #######
 
         # Add them to users table in database
@@ -138,8 +157,18 @@ def register():
         cur.execute("INSERT INTO users (username, hash) VALUES (?, ?)", (username, hash))
         con.commit()
 
+
+        ####### SET SESSION #######
         # Set session
         session["user_id"] = cur.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchall()[0][0]
+
+
+        ######## ADD IDENTITAS PELANGGAN KE DATABASE #######
+        cur.execute("INSERT INTO pelanggan (user_id, nama, nik, telepon, alamat) VALUES (?, ?, ?, ?, ?)",
+                    (session["user_id"], nama, nik, telepon, alamat))
+        con.commit()
+
+
 
         con.close()
         return redirect("/")
