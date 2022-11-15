@@ -61,6 +61,27 @@
     {% endfor %}
 </table>
 
+<p class="m-5 lead text-center">Data Stock Barang</p>
+<table class="table table-striped">
+    <tr>
+        <th>produk_id</th>
+        <th>Judul</th>
+        <th>Tahun</th>
+        <th>Stock</th>
+        <th>Harga</th>
+    </tr>
+    {% for i in produk %}
+    <tr>
+        <td>{{ i[0] }}</td>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+        <td>{{ i[3] }}</td>
+        <td>{{ i[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
 <p class="m-5 lead text-center">Data Genre Favorit Registrasi Pelanggan</p>
 
 <div class="row">

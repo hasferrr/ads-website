@@ -15,6 +15,6 @@ $ flask run
 
 ## Link
 
-atau cukup menggunakan link website ini
+atau gunakan link website ini
 
 http://hasferrr.pythonanywhere.com

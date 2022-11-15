@@ -109,6 +109,7 @@ def data():
     pelanggan = cur.execute("SELECT * FROM pelanggan").fetchall()
     sewa = cur.execute("SELECT * FROM sewa").fetchall()
     genre = cur.execute("SELECT * FROM genre").fetchall()
+    produk = cur.execute("SELECT * FROM produk").fetchall()
 
     # Plotting a Horizontal Barplot
 
@@ -133,7 +134,7 @@ def data():
     img_name = str(session["user_id"]) + "starter_genre"
     horizontal_bar(genres_favs_tot_rev, g_rev, img_name)
 
-    return render_template("data.html", users=users, pelanggan=pelanggan, sewa=sewa, genre=genre, img_name=img_name, genres_favs_tot=genres_favs_tot, genres=genres)
+    return render_template("data.html", users=users, pelanggan=pelanggan, sewa=sewa, genre=genre, produk=produk, img_name=img_name, genres_favs_tot=genres_favs_tot, genres=genres)
 
 
 
