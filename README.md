@@ -1,6 +1,6 @@
-# Desain Output Kasus DVD Kurang Laku
+# Desain Input-Output Kasus DVD Kurang Laku
 
-Desain output berupa web application yang ditayangkan pada self service device pada toko DVD kurang laku
+Desain Input-Output berupa web application yang ditayangkan pada self service device pada toko DVD kurang laku
 
 ## Cara menjalankan
 
