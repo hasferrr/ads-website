@@ -7,18 +7,16 @@
 {% block main %}
 <p class="lead text-muted"><small>Data-data ini diambil dari DataBase SQL pelanggan DVD Kurang Laku</small></p>
 
-<p class="mt-5 lead text-center">Data Username dan Password</p>
-<table class="table table-striped">
+<p class="mt-5 lead text-left">Data Username</p>
+<table class="table table-striped" style="width:30%">
     <tr>
         <th>user_id</th>
         <th>username</th>
-        <th>hash (pasword)</th>
     </tr>
     {% for i in users %}
     <tr>
         <td>{{ i[0] }}</td>
         <td>{{ i[1] }}</td>
-        <td>{{ i[2] }}</td>
     </tr>
     {% endfor %}
 </table>
