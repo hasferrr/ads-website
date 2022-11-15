@@ -9,66 +9,66 @@
 <form action="/register" method="post">
 
     <div class="row">
-        <table class="mb-3 col">
+        <table class="mb-3 col form-group">
             <tr>
                 <td>Username</td>
-                <td><input id="username" name="username" placeholder="Username" type="text" autocomplete="off" autofocus></td>
+                <td><input style="width:70%;" class="form-control" id="username" name="username" placeholder="Username" type="text" autocomplete="off" autofocus></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input name="password" placeholder="Password" type="password"></td>
+                <td><input style="width:70%;" class="form-control" name="password" placeholder="Password" type="password"></td>
             </tr>
             <tr>
                 <td>Password (Again)</td>
-                <td><input name="confirmation" placeholder="Password (again)" type="password"></td>
+                <td><input style="width:70%;" class="form-control" name="confirmation" placeholder="Password (again)" type="password"></td>
             </tr>
             <tr>
                 <td>Nama</td>
-                <td><input type="text" id="nama" name="nama"></td>
+                <td><input style="width:70%;" class="form-control" type="text" id="nama" name="nama"></td>
             </tr>
             <tr>
                 <td>Nomor Identitas (NIK)</td>
-                <td><input type="number" id="nik" name="nik"></td>
+                <td><input style="width:70%;" class="form-control" type="number" id="nik" name="nik"></td>
             </tr>
             <tr>
                 <td>Nomor Telepon</td>
-                <td><input type="number" id="telepon" name="telepon"></td>
+                <td><input style="width:70%;" class="form-control" type="number" id="telepon" name="telepon"></td>
             </tr>
             <tr>
                 <td>Alamat</td>
-                <td><input type="text" id="alamat" name="alamat"></td>
+                <td><input style="width:70%;" class="form-control" type="text" id="alamat" name="alamat"></td>
             </tr>
         </table>
 
         <div class="mb-5 form-group col">
             <p class="lead">Genre yang Diminati</p>
             <div class="form-check">
-                <input name="check" value="Horror" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Horror</label>
+                <input name="check" value="Horror" class="form-check-input" type="checkbox" id="optionsHorror"/>
+                <label class="form-check-label" for="optionsHorror">Horror</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Fantasy" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Fantasy</label>
+                <input name="check" value="Fantasy" class="form-check-input" type="checkbox" id="optionsFantasy"/>
+                <label class="form-check-label" for="optionsFantasy">Fantasy</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Drama" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Drama</label>
+                <input name="check" value="Drama" class="form-check-input" type="checkbox" id="optionsDrama"/>
+                <label class="form-check-label" for="optionsDrama">Drama</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Romance" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Romance</label>
+                <input name="check" value="Romance" class="form-check-input" type="checkbox" id="optionsRomance"/>
+                <label class="form-check-label" for="optionsRomance">Romance</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Action" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Action</label>
+                <input name="check" value="Action" class="form-check-input" type="checkbox" id="optionsAction"/>
+                <label class="form-check-label" for="optionsAction">Action</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Animation" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Animation</label>
+                <input name="check" value="Animation" class="form-check-input" type="checkbox" id="optionsAnimation"/>
+                <label class="form-check-label" for="optionsAnimation">Animation</label>
             </div>
             <div class="form-check">
-                <input name="check" value="Documentary" class="form-check-input" type="checkbox"/>
-                <label class="form-check-label">Documentary</label>
+                <input name="check" value="Documentary" class="form-check-input" type="checkbox" id="optionsDocumentary"/>
+                <label class="form-check-label" for="optionsDocumentary">Documentary</label>
             </div>
             <div>
                 <button class="btn btn-primary mt-5" type="submit">Register</button>
