@@ -28,18 +28,10 @@
                         <td>
                             <select required id="judul" name="judul">
                                 <option disabled selected value="">--Select A Title--</option>
-                                <option value="The Shawshank Redemption (1994)">The Shawshank Redemption (1994)</option>
-                                <option value="The Godfather (1972)">The Godfather (1972)</option>
-                                <option value="Soorarai Pottru (2020)">Soorarai Pottru (2020)</option>
-                                <option value="The Dark Knight (2008)">The Dark Knight (2008)</option>
-                                <option value="The Godfather: Part II (1974)">The Godfather: Part II (1974)</option>
-                                <option value="12 Angry Men (1957)">12 Angry Men (1957)</option>
-                                <option value="Dara of Jasenovac (2020)">Dara of Jasenovac (2020)</option>
-                                <option value="The Lord of the Rings: The Return of the King (2003)">The Lord of the Rings: The Return of the King (2003)</option>
-                                <option value="Pulp Fiction (1994)">Pulp Fiction (1994)</option>
-                                <option value="The Good, the Bad and the Ugly (1966)">The Good, the Bad and the Ugly (1966)</option>
-                                <option value="Schindler's List (1993)">Schindler's List (1993)</option>
-                                <option value="Peranbu (2018)">Peranbu (2018)</option>
+                                {% for i in list_of_judul %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+
                             </select>
                         </td>
                     </tr>

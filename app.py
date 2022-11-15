@@ -36,6 +36,7 @@ def index():
     username = users_pelanggan[1]
     nama = users_pelanggan[5]
 
+    # POST ROUTE
     if request.method == "POST":
 
         judul = request.form.get("judul")
@@ -53,21 +54,41 @@ def index():
         if not metode_pembayaran:
             return render_template("error.html", error="must provide data")
 
-        cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian, tanggal_sewa) VALUES (?, ?, ?, ?, ?)",
-            (session["user_id"], judul, kuantitas, tanggal_pengembalian, tanggal_sewa))
-        con.commit()
+        stock_now = cur.execute("SELECT stock FROM produk WHERE judul LIKE ?;",
+                                            (judul[:-7],)).fetchall()[0][0]
 
-        sewa_id = cur.execute("SELECT sewa_id FROM sewa WHERE user_id = ? ORDER BY sewa_id DESC LIMIT 1;",
-                                (session["user_id"],)).fetchall()[0][0]
-        cur.execute("INSERT INTO pembayaran (sewa_id, metode_pembayaran) VALUES (?, ?)",
-            (sewa_id, metode_pembayaran))
-        con.commit()
+        stock_now = int(stock_now)
 
+        if stock_now >= int(kuantitas):
+
+            cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian, tanggal_sewa) VALUES (?, ?, ?, ?, ?)",
+                (session["user_id"], judul, kuantitas, tanggal_pengembalian, tanggal_sewa))
+            cur.execute("UPDATE produk SET stock = ? WHERE judul LIKE ?",
+                (stock_now - int(kuantitas), judul[:-7]))
+            con.commit()
+
+            sewa_id = cur.execute("SELECT sewa_id FROM sewa WHERE user_id = ? ORDER BY sewa_id DESC LIMIT 1;",
+                                    (session["user_id"],)).fetchall()[0][0]
+            cur.execute("INSERT INTO pembayaran (sewa_id, metode_pembayaran) VALUES (?, ?)",
+                (sewa_id, metode_pembayaran))
+            con.commit()
+
+        else:
+            return render_template("error.html", error="sorry, out of stock")
 
         return render_template("home.html", username=username, nama=nama)
 
+    # GET ROUTE
     else:
-        return render_template("home.html", username=username, nama=nama)
+
+        products = cur.execute("SELECT judul, tahun FROM produk ORDER BY judul").fetchall()
+        # products = [('The Shawshank Redemption', 1994), ('The Godfather', 1972),..
+
+        list_of_judul = []
+        for i in products:
+            list_of_judul.append(f"{i[0]} ({i[1]})")
+
+        return render_template("home.html", username=username, nama=nama, list_of_judul=list_of_judul)
 
 
 
