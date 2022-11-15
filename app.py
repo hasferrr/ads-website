@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
 
 from account import account_page
-from helpers import login_required, connect_db
+from helpers import login_required, connect_db, get_today_date
 
 
 # Configure app
@@ -41,6 +41,8 @@ def index():
         judul = request.form.get("judul")
         kuantitas = request.form.get("kuantitas")
         tanggal_pengembalian = request.form.get("tanggal_pengembalian")
+        tanggal_sewa = get_today_date()
+        metode_pembayaran = request.form.get("pilih_metode_pembayaran")
 
         if not judul:
             return render_template("error.html", error="must provide data")
@@ -48,9 +50,17 @@ def index():
             return render_template("error.html", error="must provide data")
         if not tanggal_pengembalian:
             return render_template("error.html", error="must provide data")
+        if not metode_pembayaran:
+            return render_template("error.html", error="must provide data")
 
-        cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian) VALUES (?, ?, ?, ?)",
-            (session["user_id"], judul, kuantitas, tanggal_pengembalian))
+        cur.execute("INSERT INTO sewa (user_id, judul, kuantitas, tanggal_pengembalian, tanggal_sewa) VALUES (?, ?, ?, ?, ?)",
+            (session["user_id"], judul, kuantitas, tanggal_pengembalian, tanggal_sewa))
+        con.commit()
+
+        sewa_id = cur.execute("SELECT sewa_id FROM sewa WHERE user_id = ? ORDER BY sewa_id DESC LIMIT 1;",
+                                (session["user_id"],)).fetchall()[0][0]
+        cur.execute("INSERT INTO pembayaran (sewa_id, metode_pembayaran) VALUES (?, ?)",
+            (sewa_id, metode_pembayaran))
         con.commit()
 
 

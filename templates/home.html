@@ -47,8 +47,8 @@
                         <td><label for="kuantitas">Kuantitas</label></td>
                         <td>
                             <select required id="kuantitas" name="kuantitas">
-                                <option disabled value="">--Select Quantities--</option>
-                                <option selected value="1">1</option>
+                                <option selected disabled value="">--Select Quantities--</option>
+                                <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td><label for="tanggal_pengembalian">Tanggal Pengembalian</label></td>
-                        <td><input required type="date" id="tanggal_pengembalian" name="tanggal_pengembalian"></td>
+                        <td><input required type="date" min="" id="tanggal_pengembalian" name="tanggal_pengembalian"></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -103,7 +103,7 @@
                 </table>
                 <div class="row form-group mt-4" id="button_pilih_metode_pembayaran">
                     <div class="col">
-                        <select class="form-control" id="pilih_metode_pembayaran">
+                        <select class="form-control" id="pilih_metode_pembayaran" name="pilih_metode_pembayaran">
                             <option disabled selected value="">-- Pilih metode pembayaran --</option>
                             <option value="Tunai"     > Tunai      </option>
                             <option value="Debit"     > Debit      </option>

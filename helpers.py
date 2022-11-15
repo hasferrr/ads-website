@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 from functools import wraps
 
 from flask import redirect, session
@@ -32,3 +33,6 @@ def username_validation(username):
             return 2
     return 0
 
+
+def get_today_date():
+    return datetime.today().strftime('%Y-%m-%d')
