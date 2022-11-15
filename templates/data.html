@@ -61,30 +61,50 @@
     {% endfor %}
 </table>
 
-<p class="mt-5 lead text-center">Data Genre Favorit</p>
-<table class="table table-striped">
-    <tr>
-        <th>user_id</th>
-        <th>Horror</th>
-        <th>Fantasy</th>
-        <th>Drama</th>
-        <th>Romance</th>
-        <th>Action</th>
-        <th>Animation</th>
-        <th>Documentary</th>
-    </tr>
-    {% for i in genre %}
-    <tr>
-        <td>{{ i[1] }}</td>
-        <td>{{ i[2] }}</td>
-        <td>{{ i[3] }}</td>
-        <td>{{ i[4] }}</td>
-        <td>{{ i[5] }}</td>
-        <td>{{ i[6] }}</td>
-        <td>{{ i[7] }}</td>
-        <td>{{ i[8] }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<p class="m-5 lead text-center">Data Genre Favorit Registrasi Pelanggan</p>
 
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <tr>
+                <th>Genre</td>
+                <th>Jumlah peminat</td>
+            </tr>
+            <tr>
+                <td>Horror</td>
+                <td>{{genres_favs_tot[0]}}</td>
+            </tr>
+            <tr>
+                <td>Fantasy</td>
+                <td>{{genres_favs_tot[1]}}</td>
+            </tr>
+            <tr>
+                <td>Drama</td>
+                <td>{{genres_favs_tot[2]}}</td>
+            </tr>
+            <tr>
+                <td>Romance</td>
+                <td>{{genres_favs_tot[3]}}</td>
+            </tr>
+            <tr>
+                <td>Action</td>
+                <td>{{genres_favs_tot[4]}}</td>
+            </tr>
+            <tr>
+                <td>Animation</td>
+                <td>{{genres_favs_tot[5]}}</td>
+            </tr>
+            <tr>
+                <td>Documentary</td>
+                <td>{{genres_favs_tot[6]}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col">
+        <div class="text-center">
+            <img src="static/img/{{ img_name }}.png" class="img-fluid" alt="plot">
+        </div>
+    </div>
+
+</div>
 {% endblock %}

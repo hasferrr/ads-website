@@ -3,6 +3,8 @@ from datetime import datetime
 from functools import wraps
 
 from flask import redirect, session
+import matplotlib.pyplot as plt
+from numpy import arange as arange
 
 
 def login_required(f):
@@ -36,3 +38,38 @@ def username_validation(username):
 
 def get_today_date():
     return datetime.today().strftime('%Y-%m-%d')
+
+
+def horizontal_bar(height, bars, file_name="foo", bar_color='#69b3a2'):
+    """
+    Plotting a Horizontal Barplot using Matplotlib
+    https://www.python-graph-gallery.com/2-horizontal-barplot
+    """
+
+    """
+    Matplotlib and :RuntimeError: main thread is not in main loop:
+    https://stackoverflow.com/questions/52839758/matplotlib-and-runtimeerror-main-thread-is-not-in-main-loop
+    """
+    plt.switch_backend('agg')
+
+    # Example
+    # height = [30, 120, 5505, 180, 450]  y-axis
+    # bars = ('A', 'B', 'C', 'D', 'E')    x-axis
+    y_pos = arange(len(bars))
+
+    # Create horizontal bars
+    plt.barh(y_pos, height, color=bar_color)
+
+    # Create names on the x-axis
+    plt.yticks(y_pos, bars)
+    plt.xticks(height, height)
+
+    # Save graphic
+    plt.tight_layout()
+    plt.savefig("static/img/" + file_name + ".png")
+
+    # Clear plot
+    plt.close()
+    plt.cla()
+    plt.clf()
+

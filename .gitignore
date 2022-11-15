@@ -193,13 +193,6 @@ htmlcov/
 # hasfer
 /*_session/
 
-static/img/*.png
-!static/img/blank.png
-!static/img/demo*.png
-
-export/*
-!export/blank.csv
-
 test.py
 psuedocode.md
 

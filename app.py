@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
 
 from account import account_page
-from helpers import login_required, connect_db, get_today_date
+from helpers import login_required, connect_db, get_today_date, horizontal_bar
 
 
 # Configure app
@@ -89,7 +89,30 @@ def data():
     sewa = cur.execute("SELECT * FROM sewa").fetchall()
     genre = cur.execute("SELECT * FROM genre").fetchall()
 
-    return render_template("data.html", users=users, pelanggan=pelanggan, sewa=sewa, genre=genre)
+    # Plotting a Horizontal Barplot
+
+    genres = ["Horror","Fantasy","Drama","Romance","Action","Animation","Documentary"]
+
+    genres_favs_tot = []
+    for i in genres:
+        temp = cur.execute(f"SELECT SUM({i}) FROM genre").fetchall()[0][0]
+        genres_favs_tot.append(temp)
+
+    g_rev = []
+    for i in genres:
+        g_rev.append(i)
+    g_rev.reverse()
+
+    genres_favs_tot_rev = []
+    for i in genres_favs_tot:
+        genres_favs_tot_rev.append(i)
+    genres_favs_tot_rev.reverse()
+
+
+    img_name = str(session["user_id"]) + "starter_genre"
+    horizontal_bar(genres_favs_tot_rev, g_rev, img_name)
+
+    return render_template("data.html", users=users, pelanggan=pelanggan, sewa=sewa, genre=genre, img_name=img_name, genres_favs_tot=genres_favs_tot, genres=genres)
 
 
 
